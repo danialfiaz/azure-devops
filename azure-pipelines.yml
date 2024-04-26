@@ -22,6 +22,6 @@ steps:
     inlineScript: |
       #az --version
       az aks get-credentials --resource-group terraform-rg --name aks-cluster
-      kubectl get all
+      kubectl get nodes
       #az acr login --name $(acr_registry) --expose-token
 
