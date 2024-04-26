@@ -31,5 +31,5 @@ steps:
   - task: Bash@3
     inputs:
       filePath: 'ingress-controller.sh'
-      arguments: 'ingress-basic'
+      arguments: 'nginx-ingress $(ACR_LOGIN_SERVER) ingress-basic'
       #workingDirectory: "ingress/"
