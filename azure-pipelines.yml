@@ -28,8 +28,8 @@ steps:
 #       az acr import --name $(acr_registry) --source $(SOURCE_REGISTRY)/$(DEFAULTBACKEND_IMAGE):$(DEFAULTBACKEND_TAG) --image $(DEFAULTBACKEND_IMAGE):$(DEFAULTBACKEND_TAG)
 #       az acr login --name $(acr_registry) --expose-token
 
-  - task: Bash@3
-    inputs:
-      filePath: 'ingress-controller.sh'
-      arguments: 'nginx-ingress $(ACR_LOGIN_SERVER) ingress-basic'
-      #workingDirectory: "ingress/"
+  # - task: Bash@3
+  #   inputs:
+  #     filePath: 'ingress-controller.sh'
+  #     arguments: 'nginx-ingress $(ACR_LOGIN_SERVER) ingress-basic'
+  #     #workingDirectory: "ingress/"
