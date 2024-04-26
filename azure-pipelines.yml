@@ -9,19 +9,19 @@ trigger:
 pool: 'aks-private'
 
 steps:
-# - script: echo Hello, world!
-#   displayName: 'Run a one-line script'
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
 
-# - script: |
-#     echo Add other tasks to build, test, and deploy your project.
-#     echo See https://aka.ms/yaml
-#   displayName: 'Run a multi-line script'
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
 - task: AzureCLI@2
-  displayName: Azure CLI
+  displayName: 'Import image to Azure Container Registry'
   inputs:
-    azureSubscription: fd88ef04-4540-4dff-908f-98266ed5d1a8
-    scriptType: ps
-    scriptLocation: inlineScript
+    azureSubscription: 'fd88ef04-4540-4dff-908f-98266ed5d1a8'  # Specify your Azure subscription here
+    scriptType: 'bash'
+    scriptLocation: 'inline'
     inlineScript: |
-      az --version
-      az account show
+      az acr import --name $(REGISTRY_NAME) --source $(SOURCE_REGISTRY)/$(CONTROLLER_IMAGE):$(CONTROLLER_TAG) --image $(CONTROLLER_IMAGE):$(CONTROLLER_TAG)
+
