@@ -19,7 +19,7 @@ steps:
 - task: AzureCLI@2
   displayName: 'Import image to Azure Container Registry'
   inputs:
-    azureSubscription: 'fd88ef04-4540-4dff-908f-98266ed5d1a8'  # Specify your Azure subscription here
+    azureSubscription: 'azure' #'fd88ef04-4540-4dff-908f-98266ed5d1a8'  # Specify your Azure subscription here
     scriptType: 'bash'
     scriptLocation: 'inline'
     inlineScript: |
