@@ -20,7 +20,7 @@ steps:
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      az --version
+      #az --version
       az aks get-credentials --resource-group terrform-rg --name aks-cluster
       kubectl get all
       #az acr login --name $(acr_registry) --expose-token
