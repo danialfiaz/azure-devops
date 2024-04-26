@@ -8,21 +8,18 @@ trigger:
 
 pool: 'aks-private'
 
-steps:
-# - script: echo Hello, world!
-#   displayName: 'Run a one-line script'
+variables: 
+- group: 'Azure-cloud-secrets'
 
-# - script: |
-#     echo Add other tasks to build, test, and deploy your project.
-#     echo See https://aka.ms/yaml
-#   displayName: 'Run a multi-line script'
+steps:
+
 - task: AzureCLI@2
   displayName: 'Import image to Azure Container Registry'
   inputs:
     azureSubscription: 'azure' # Specify your Azure subscription here
-    scriptType: 'ps' #'bash'
+    scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
       az --version
-      az acr login --name <acrName> --expose-token
+      az acr login --name $(acr_registry) --expose-token
 
