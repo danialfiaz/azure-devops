@@ -24,10 +24,10 @@ DEFAULTBACKEND_TAG=1.5
 # create namespace if doesn't exists
 kubectl create namespace $NAMESPACE --dry-run=client -o yaml | kubectl apply -f -
 
-# # Authenticate with ACR with --expose-token
-# export HELM_EXPERIMENTAL_OCI=1
-# TOKEN=$(az acr login --name $ACR_URL --expose-token --output tsv --query accessToken)
-# echo $TOKEN | helm registry login $ACR_URL --username 00000000-0000-0000-0000-000000000000 --password-stdin
+ # Authenticate with ACR with --expose-token
+export HELM_EXPERIMENTAL_OCI=1
+TOKEN=$(az acr login --name $ACR_LOGIN_SERVER --expose-token --output tsv --query accessToken)
+echo $TOKEN | helm registry login $ACR_LOGIN_SERVER --username 00000000-0000-0000-0000-000000000000 --password-stdin
 
 # # Pull Helm Chart from Azure Container Registry & extract files
 # helm pull oci://$ACR_URL/<pathofregistry> --version 3.36.0 --untar
