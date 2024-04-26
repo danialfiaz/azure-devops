@@ -46,7 +46,6 @@ ACR_LOGIN_SERVER=$ACR_LOGIN_SERVER
 helm install ingress-nginx ingress-nginx/ingress-nginx \
     --version 4.7.1 \
     --namespace $NAMESPACE \
-    #--create-namespace \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."kubernetes\.io/os"=linux \
     --set controller.image.registry=$ACR_LOGIN_SERVER \
