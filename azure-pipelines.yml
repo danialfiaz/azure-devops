@@ -21,5 +21,6 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       az --version
-      az acr login --name $(acr_registry) --expose-token
+      kubectl get all
+      #az acr login --name $(acr_registry) --expose-token
 
