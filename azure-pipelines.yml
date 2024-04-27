@@ -29,14 +29,21 @@ steps:
 #       az acr login --name $(acr_registry) --expose-token
 
   - task: Bash@3
+    displayName: 'Installing Helm'
+    inputs:
+      filePath: 'install-helm.sh'
+      workingDirectory: "scripts/"
+
+  - task: Bash@3
+    displayName: 'Configuring Ingress controller'
     inputs:
       filePath: 'ingress-controller.sh'
       arguments: 'nginx-ingress $(ACR_LOGIN_SERVER) ingress-basic'
-      #workingDirectory: "ingress/"
+      workingDirectory: "scripts/"
 
 
   - task: AzureCLI@2
-    displayName: 'Import image to Azure Container Registry'
+    displayName: 'Configuring sample application'
     inputs:
       azureSubscription: 'azure'
       scriptType: 'bash'
