@@ -2,11 +2,6 @@
 INGRESS_NAME=$1
 ACR_LOGIN_SERVER=$2
 NAMESPACE=$3
-# INGRESS_VALUES_FILE=$4
-# AKS_HELLO=$5
-# INGRESS_DEMO=$6
-# INGRESS_MANIFEST=$7
-
 
 
 #acr_registry=<yourregistryname>
@@ -40,9 +35,6 @@ echo $TOKEN | helm registry login $ACR_LOGIN_SERVER --username 00000000-0000-000
 # Pull Helm Chart from Azure Container Registry & extract files
 helm pull oci://$ACR_URL/<pathofregistry> --version 4.7.1 --untar
 
-#validate chart is desired version
-# helm show chart ingress-nginx
-
 # Add the ingress-nginx repository
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
 helm repo update
@@ -73,16 +65,3 @@ helm install ingress-nginx ingress-nginx/ingress-nginx \
     --set defaultBackend.image.image=$DEFAULTBACKEND_IMAGE \
     --set defaultBackend.image.tag=$DEFAULTBACKEND_TAG \
     --set defaultBackend.image.digest=""
-
-
-
-
-# # Create aks-helloworld and ingress-demo
-# kubectl apply -f $AKS_HELLO --namespace $NAMESPACE
-# kubectl apply -f $INGRESS_DEMO --namespace $NAMESPACE
-
-# # Delete validatingwebhookconfigurations
-# kubectl delete validatingwebhookconfigurations nginx-ingress-ingress-nginx-admission
-
-# # Deploy manifest to AKS
-# kubectl apply -f $INGRESS_MANIFEST
