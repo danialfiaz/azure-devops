@@ -46,6 +46,17 @@ steps:
       filePath: 'scripts/install-kubectl.sh'
       #workingDirectory: "scripts/install-kubectl.sh"
 
+  - task: AzureCLI@2
+    displayName: 'get credentials'
+    inputs:
+      azureSubscription: 'aks-cluster'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        # az --version
+         az aks get-credentials --resource-group terraform-rg --name aks-cluster
+        # kubectl get pods
+
   - task: Bash@3
     displayName: 'Configuring Ingress controller'
     inputs:
