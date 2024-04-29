@@ -16,8 +16,8 @@ steps:
   - task: Bash@3
     displayName: 'Configuring azure cli'
     inputs:
-      filePath: 'azure-cli.sh'
-      workingDirectory: "scripts/"
+      filePath: 'scripts/azure-cli.sh'
+      #workingDirectory: "scripts/azure-cli.sh"
           
   - task: AzureCLI@2
     displayName: 'Import image to Azure Container Registry'
@@ -37,21 +37,21 @@ steps:
   - task: Bash@3
     displayName: 'Installing Helm'
     inputs:
-      filePath: 'install-helm.sh'
-      workingDirectory: "scripts/"
+      filePath: 'scripts/install-helm.sh'
+      #workingDirectory: "scripts/install-helm.sh"
 
   - task: Bash@3
     displayName: 'Installing Kubectl'
     inputs:
-      filePath: 'install-kubectl.sh'
-      workingDirectory: "scripts/"
+      filePath: 'scripts/install-kubectl.sh'
+      #workingDirectory: "scripts/install-kubectl.sh"
 
   - task: Bash@3
     displayName: 'Configuring Ingress controller'
     inputs:
-      filePath: 'ingress-controller.sh'
+      filePath: 'scripts/ingress-controller.sh'
       arguments: 'nginx-ingress $(ACR_LOGIN_SERVER) ingress-basic'
-      workingDirectory: "scripts/"
+      #workingDirectory: "scripts/ingress-controller.sh"
 
 
   - task: AzureCLI@2
@@ -65,7 +65,7 @@ steps:
         kubectl apply -f  aks-helloworld-one --namespace ingress-basic
         kubectl apply -f  aks-helloworld-two --namespace ingress-basic
         kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
-      workingDirectory: "scripts/"
+      #workingDirectory: "scripts/"
         
         # az acr import --name $(acr_registry) --source $(SOURCE_REGISTRY)/$(CONTROLLER_IMAGE):$(CONTROLLER_TAG) --image $(CONTROLLER_IMAGE):$(CONTROLLER_TAG)
         # az acr import --name $(acr_registry) --source $(SOURCE_REGISTRY)/$(PATCH_IMAGE):$(PATCH_TAG) --image $(PATCH_IMAGE):$(PATCH_TAG)
