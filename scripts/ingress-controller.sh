@@ -58,7 +58,7 @@ helm install ingress-nginx ingress-nginx/ingress-nginx \
     --set controller.image.tag=$CONTROLLER_TAG \
     --set controller.image.digest="" \
     --set controller.admissionWebhooks.patch.nodeSelector."kubernetes\.io/os"=linux \
-    --set controller.service.loadBalancerIP=52.237.61.153 \
+    --set controller.service.loadBalancerIP=20.126.127.111 \ #52.237.61.153 \
     --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true \
     --set controller.service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-health-probe-request-path"=/healthz \
     --set controller.admissionWebhooks.patch.image.registry=$ACR_LOGIN_SERVER \
