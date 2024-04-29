@@ -73,12 +73,7 @@ steps:
       scriptLocation: 'inlineScript'
       inlineScript: |
         az aks get-credentials --resource-group terraform-rg --name aks-cluster
-        kubectl apply -f  aks-helloworld-one --namespace ingress-basic
-        kubectl apply -f  aks-helloworld-two --namespace ingress-basic
-        kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
+        kubectl apply -f  scripts/aks-helloworld-one --namespace ingress-basic
+        kubectl apply -f  scripts/aks-helloworld-two --namespace ingress-basic
+        kubectl apply -f scripts/hello-world-ingress.yaml --namespace ingress-basic
       #workingDirectory: "scripts/"
-        
-        # az acr import --name $(acr_registry) --source $(SOURCE_REGISTRY)/$(CONTROLLER_IMAGE):$(CONTROLLER_TAG) --image $(CONTROLLER_IMAGE):$(CONTROLLER_TAG)
-        # az acr import --name $(acr_registry) --source $(SOURCE_REGISTRY)/$(PATCH_IMAGE):$(PATCH_TAG) --image $(PATCH_IMAGE):$(PATCH_TAG)
-        # az acr import --name $(acr_registry) --source $(SOURCE_REGISTRY)/$(DEFAULTBACKEND_IMAGE):$(DEFAULTBACKEND_TAG) --image $(DEFAULTBACKEND_IMAGE):$(DEFAULTBACKEND_TAG)
-        # az acr login --name $(acr_registry) --expose-token
