@@ -55,7 +55,7 @@ steps:
       inlineScript: |
         # az --version
          az aks get-credentials --resource-group terraform-rg --name aks-cluster
-        # kubectl get pods
+         kubectl get pods -n ingress-basic
 
   # - task: Bash@3
   #   displayName: 'Configuring Ingress controller'
