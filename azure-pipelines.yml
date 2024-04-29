@@ -19,20 +19,20 @@ steps:
       filePath: 'scripts/azure-cli.sh'
       #workingDirectory: "scripts/azure-cli.sh"
           
-  # - task: AzureCLI@2
-  #   displayName: 'Import image to Azure Container Registry'
-  #   inputs:
-  #     azureSubscription: 'aks-cluster'
-  #     scriptType: 'bash'
-  #     scriptLocation: 'inlineScript'
-  #     inlineScript: |
-  #       # #az --version
-  #       # az aks get-credentials --resource-group terraform-rg --name aks-cluster
-  #       # kubectl get pods
-  #       az acr import --name $(acr_registry) --source $(SOURCE_REGISTRY)/$(CONTROLLER_IMAGE):$(CONTROLLER_TAG) --image $(CONTROLLER_IMAGE):$(CONTROLLER_TAG)
-  #       az acr import --name $(acr_registry) --source $(SOURCE_REGISTRY)/$(PATCH_IMAGE):$(PATCH_TAG) --image $(PATCH_IMAGE):$(PATCH_TAG)
-  #       az acr import --name $(acr_registry) --source $(SOURCE_REGISTRY)/$(DEFAULTBACKEND_IMAGE):$(DEFAULTBACKEND_TAG) --image $(DEFAULTBACKEND_IMAGE):$(DEFAULTBACKEND_TAG)
-  #       az acr login --name $(acr_registry) --expose-token
+  - task: AzureCLI@2
+    displayName: 'Import image to Azure Container Registry'
+    inputs:
+      azureSubscription: 'aks-cluster'
+      scriptType: 'bash'
+      scriptLocation: 'inlineScript'
+      inlineScript: |
+        # #az --version
+        # az aks get-credentials --resource-group terraform-rg --name aks-cluster
+        # kubectl get pods
+        az acr import --name $(acr_registry) --source $(SOURCE_REGISTRY)/$(CONTROLLER_IMAGE):$(CONTROLLER_TAG) --image $(CONTROLLER_IMAGE):$(CONTROLLER_TAG)
+        az acr import --name $(acr_registry) --source $(SOURCE_REGISTRY)/$(PATCH_IMAGE):$(PATCH_TAG) --image $(PATCH_IMAGE):$(PATCH_TAG)
+        az acr import --name $(acr_registry) --source $(SOURCE_REGISTRY)/$(DEFAULTBACKEND_IMAGE):$(DEFAULTBACKEND_TAG) --image $(DEFAULTBACKEND_IMAGE):$(DEFAULTBACKEND_TAG)
+        az acr login --name $(acr_registry) --expose-token
 
   - task: Bash@3
     displayName: 'Installing Helm'
