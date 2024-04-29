@@ -1,7 +1,7 @@
 #!/bin/sh
 
 sudo apt-get update
-sudo apt-get install apt-transport-https ca-certificates curl gnupg lsb-release
+sudo apt-get install -y apt-transport-https ca-certificates curl gnupg lsb-release
 
 sudo mkdir -p /etc/apt/keyrings
 curl -sLS https://packages.microsoft.com/keys/microsoft.asc |
