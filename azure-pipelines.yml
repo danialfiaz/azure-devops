@@ -73,7 +73,7 @@ steps:
       scriptLocation: 'inlineScript'
       inlineScript: |
         az aks get-credentials --resource-group terraform-rg --name aks-cluster
-        kubectl apply -f  scripts/aks-helloworld-one --namespace ingress-basic
-        kubectl apply -f  scripts/aks-helloworld-two --namespace ingress-basic
-        kubectl apply -f scripts/hello-world-ingress.yaml --namespace ingress-basic
+        kubectl apply -f  scripts/aks-hello-world-one --namespace ingress-basic
+        kubectl apply -f  scripts/aks-hello-world-two --namespace ingress-basic
+        kubectl apply -f scripts/helloworld-ingress.yaml --namespace ingress-basic
       #workingDirectory: "scripts/"
