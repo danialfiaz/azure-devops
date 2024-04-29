@@ -48,7 +48,7 @@ helm repo update
 ACR_LOGIN_SERVER=$ACR_LOGIN_SERVER
 
 # Use Helm to deploy an NGINX ingress controller
-helm install ingress-nginx ingress-nginx/ingress-nginx \
+helm install ingress-nginx ingress-nginx-1/ingress-nginx-1 \
     --version 4.7.1 \
     --namespace $NAMESPACE \
     --set controller.replicaCount=2 \
