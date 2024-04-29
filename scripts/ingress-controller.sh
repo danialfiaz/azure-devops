@@ -22,7 +22,12 @@ PATCH_IMAGE=ingress-nginx/kube-webhook-certgen
 PATCH_TAG=v20230407
 DEFAULTBACKEND_IMAGE=defaultbackend-amd64
 DEFAULTBACKEND_TAG=1.5
+RESOURCE_GROUP=terraform-rg
+CLUSTER_NAME=aks-cluster
 
+# get kubernetes credentials
+
+az aks get-credentials --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME
 
 # create namespace if doesn't exists
 kubectl create namespace $NAMESPACE --dry-run=client -o yaml | kubectl apply -f -
