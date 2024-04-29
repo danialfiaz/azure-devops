@@ -15,21 +15,21 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: aks-helloworld-one
+            name: aks-hello-world-one
             port:
               number: 80
       - path: /hello-world-two(/|$)(.*)
         pathType: Prefix
         backend:
           service:
-            name: aks-helloworld-two
+            name: aks-hello-world-two
             port:
               number: 80
       - path: /(.*)
         pathType: Prefix
         backend:
           service:
-            name: aks-helloworld-one
+            name: aks-hello-world-one
             port:
               number: 80
 ---
@@ -49,6 +49,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: aks-helloworld-one
+            name: aks-hello-world-one
             port: 
               number: 80
