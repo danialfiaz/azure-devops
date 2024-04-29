@@ -13,6 +13,12 @@ variables:
 
 steps:
 
+  - task: Bash@3
+    displayName: 'Installing az cli on vm'
+    inputs:
+      inlineScript: |
+        curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+          
   - task: AzureCLI@2
     displayName: 'Import image to Azure Container Registry'
     inputs:
