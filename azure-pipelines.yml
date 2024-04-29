@@ -16,7 +16,7 @@ steps:
   - task: AzureCLI@2
     displayName: 'Import image to Azure Container Registry'
     inputs:
-      azureSubscription: 'azure'
+      azureSubscription: 'aks-cluster'
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
@@ -51,7 +51,7 @@ steps:
   - task: AzureCLI@2
     displayName: 'Configuring sample application'
     inputs:
-      azureSubscription: 'azure'
+      azureSubscription: 'aks-cluster'
       scriptType: 'bash'
       scriptLocation: 'inlineScript'
       inlineScript: |
@@ -59,6 +59,7 @@ steps:
         kubectl apply -f  aks-helloworld-one --namespace ingress-basic
         kubectl apply -f  aks-helloworld-two --namespace ingress-basic
         kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
+      workingDirectory: "scripts/"
         
         # az acr import --name $(acr_registry) --source $(SOURCE_REGISTRY)/$(CONTROLLER_IMAGE):$(CONTROLLER_TAG) --image $(CONTROLLER_IMAGE):$(CONTROLLER_TAG)
         # az acr import --name $(acr_registry) --source $(SOURCE_REGISTRY)/$(PATCH_IMAGE):$(PATCH_TAG) --image $(PATCH_IMAGE):$(PATCH_TAG)
