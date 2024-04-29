@@ -57,12 +57,12 @@ steps:
          az aks get-credentials --resource-group terraform-rg --name aks-cluster
         # kubectl get pods
 
-  - task: Bash@3
-    displayName: 'Configuring Ingress controller'
-    inputs:
-      filePath: 'scripts/ingress-controller.sh'
-      arguments: 'nginx-ingress $(ACR_LOGIN_SERVER) ingress-basic'
-      #workingDirectory: "scripts/ingress-controller.sh"
+  # - task: Bash@3
+  #   displayName: 'Configuring Ingress controller'
+  #   inputs:
+  #     filePath: 'scripts/ingress-controller.sh'
+  #     arguments: 'nginx-ingress $(ACR_LOGIN_SERVER) ingress-basic'
+  #     #workingDirectory: "scripts/ingress-controller.sh"
 
 
   - task: AzureCLI@2
